@@ -1,4 +1,4 @@
-# iss-tracker-app
+# ISS Tracker app
 
 http://www.notkal.com/iss-tracker-app/
 
