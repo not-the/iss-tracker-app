@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch JSON from API and map lat long</title>
+
+    <!-- Leaflet.js -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""
+    />
+    <script
+        src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""
+    ></script>
+
+    <!-- General CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <main id="container">
+        <!-- Title -->
+        <h1>Where is the ISS?</h1>
+
+        <!-- Flex Container -->
+        <div class="flex">
+
+            <div class="side_section">
+                <!-- Options -->
+                <h3>Options:</h3>
+                
+                <input type="checkbox" name="" id="keepCentered" checked onclick="centered()">
+                <label for="keepCentered">Keep ISS centered</label>
+    
+                <!-- Info -->
+                <h3>Current Position:</h3>
+                <div class="table_container">
+                    <!-- <img src="pin_white.png" alt="pin" id="pin_info" title="Pin Info Panel" onclick="pin()"> -->
+                    <table id="info">
+                        <tr>
+                            <th>Latitude:</th>
+                            <td>
+                                <span id="lat" class="num"></span>°<br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Longitude:</th>
+                            <td>
+                                <span id="lon" class="num"></span>°<br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Altitude:</th>
+                            <td>
+                                <span id="alt" class="num"></span> kilometers
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- More Info -->
+                    <div id="hidden_info" class="pinned">
+                        <table>
+                            <tr>
+                                <th>Velocity:</th>
+                                <td>
+                                    <span id="vel" class="num"></span> km/time<br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Visibility:</th>
+                                <td>
+                                    <span id="vis" class="num"></span><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>daynum:</th>
+                                <td>
+                                    <span id="day" class="num"></span> days
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+    
+                <!-- <p>
+                    <span class="gray">HOVER FOR MORE INFO</span>
+                </p> -->
+                
+                
+    
+                <!-- Show more info -->
+                <!-- <button id="more_info">Show More Info</button> -->
+            </div>
+                    
+            <!-- Map -->
+            <div id="issMap"></div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="flex">
+        <div class="footer_column">
+            <b><u>Credits:</u></b><br>
+            Where The ISS At:<br>
+            The Coding Train:<br><br class="mediabreak">
+            Leaflet.js:<br>
+            OpenStreetMap:
+        </div>
+        <div class="footer_column">
+            <br>
+            <a href="https://wheretheiss.at/">https://wheretheiss.at/</a><br>
+            <a href="https://youtu.be/jKQUHGpOHqg">https://youtu.be/jKQUHGpOHqg</a><br>
+            <a href="https://leafletjs.com/">https://leafletjs.com/</a><br>
+            <a href="https://www.openstreetmap.org/copyright">https://www.openstreetmap.org/copyright</a>
+        </div>
+    </footer>
+
+
+
+    <!-- Javascript -->
+    <script src="index.js"></script>
+</body>
+</html>
