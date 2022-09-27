@@ -50,23 +50,22 @@ keepCentered: ${localStorage.getItem("keepCentered")}
 pinned: ${localStorage.getItem("pinned")}`);
 
 let firstTime = true;
-async function getISS(center) {
+async function getISS() {
     const response = await fetch(apiURL);
     const data = await response.json();
     const { latitude, longitude, altitude, velocity, visibility, daynum } = data;
 
     marker.setLatLng([latitude, longitude]);
-    if(firstTime || keepCentered.checked || center) {
+    if(firstTime || keepCentered.checked) {
         firstTime = false;
-        mymap.setView([data.latitude, longitude]);
-        
+        mymap.setView([latitude, longitude]);
     }
     // mymap.setView([latitude, longitude]);
     
 
     lat.textContent = latitude.toFixed(2);
     lon.textContent = longitude.toFixed(2);
-    alt.textContent = " " + altitude.toFixed(2);
+    alt.textContent = altitude.toFixed(2);
     vel.textContent = velocity.toFixed(2);
     vis.textContent = visibility;
     day.textContent = daynum.toFixed(1);
@@ -75,13 +74,11 @@ async function getISS(center) {
 }
 
 // Store keepCentered Option
-function centered() {
-    if(keepCentered.checked) {
-        localStorage.setItem("keepCentered", "true");
-        getISS(true);
-    } else {
-        localStorage.setItem("keepCentered", "false");
-    }
+function centered(override) {
+    let state = override || keepCentered.checked;
+    keepCentered.checked = state;
+    localStorage.setItem("keepCentered", state);
+    getISS();
 }
 
 // Pin info button
@@ -107,6 +104,10 @@ function centered() {
 //         page.pinInfo.classList.add("pinned");
 //     }
 // }
+
+document.getElementById("issMap").addEventListener("click", () => {
+    keepCentered.checked = false;
+});
 
 getISS();
 setInterval(getISS, 2000);
