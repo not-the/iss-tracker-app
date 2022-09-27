@@ -2,8 +2,7 @@
 
 // Making a map and tiles
 const mymap = L.map('issMap').setView([0, 0], 2);
-const attribution = 
-    '&copy <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+const attribution = '&copy <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const tiles = L.tileLayer(tileUrl, { attribution });
@@ -33,8 +32,8 @@ const page = {
     vis: document.getElementById('vis'),
     day: document.getElementById('day'),
     keepCentered: document.getElementById('keepCentered'),
-    pinInfo: document.getElementById('pin_info'),
-    hiddenInfo: document.getElementById('hidden_info')
+    // pinInfo: document.getElementById('pin_info'),
+    // hiddenInfo: document.getElementById('hidden_info'),
 }
 
 
